@@ -320,4 +320,4 @@ def create_sign_up_window():
     style.configure('Custom.TButton', font=('Arial', 12))  # Change font and size as needed
     root.mainloop()
 
-create_sign_up_window()
+#create_sign_up_window()

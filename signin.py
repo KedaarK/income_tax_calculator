@@ -2,7 +2,7 @@ from tkinter import *
 from PIL import ImageTk
 from tkinter import messagebox
 import pymysql
-
+from SEM4Project import profile
 
 def create_sign_in_window():
     def forget_pass():
@@ -30,10 +30,10 @@ def create_sign_in_window():
         window = Toplevel()
         window.title('Change Password')
 
-        bgPic = ImageTk.PhotoImage(file='C:/Users/KEDAAR/Downloads/D7A_35/D7A_35/pythonProject/SEM4Project/background.jpg')
+        # bgPic = ImageTk.PhotoImage(file='C:/Users/KEDAAR/Downloads/D7A_35/D7A_35/pythonProject/SEM4Project/background.jpg')
 
-        bgLabel = Label(window, image=bgPic)
-        bgLabel.grid()
+        # bgLabel = Label(window, image=bgPic)
+        # bgLabel.grid()
 
         heading = Label(window, text='RESET PASSWORD', font=('arial', 18, 'bold'), bg='white', fg='magenta')
         heading.place(x=470, y=60)
@@ -79,13 +79,14 @@ def create_sign_in_window():
                 return
             query = 'use kedaark5'
             mycursor.execute(query)
-            query = 'Select  * from username=%s and password=%s'
+            query = 'Select  * from data Where gmail=%s and password=%s'
             mycursor.execute(query, (emailEntry.get(), passwordEntry.get()))
             row = mycursor.fetchone()
             if row == None:
                 messagebox.showerror('Error', 'Invalid username or password')
             else:
                 messagebox.showinfo('Welcome', 'Login successful')
+                profile.user_profile(emailEntry.get())
 
     def user_enter(event):
         if emailEntry.get() == 'Email':
@@ -109,46 +110,43 @@ def create_sign_in_window():
 
     login_window = Tk()
 
-    login_window.geometry('990x660+50+50')
+    login_window.geometry('600x550')
+    login_window.configure(bg="#fdc1d0")
     login_window.resizable(0, 0)
     login_window.title('Login Page')
-    bgImg = ImageTk.PhotoImage(file='C:/Users/KEDAAR/Downloads/D7A_35/D7A_35/pythonProject/SEM4Project/bg.jpg')
+    #bgImg = ImageTk.PhotoImage(file='C:/Users/KEDAAR/Downloads/D7A_35/D7A_35/pythonProject/SEM4Project/bg.jpg')
 
-    bgLabel = Label(login_window, image=bgImg)
-    bgLabel.place(x=0, y=0)
+    #bgLabel = Label(login_window, image=bgImg)
+    #bgLabel.place(x=0, y=0)
 
-    heading = Label(login_window, text='USER LOGIN', font=('Microsoft Yahei UI Light', 23, 'bold'), bg='white',
-                    fg='firebrick1')
-    heading.place(x=605, y=120)
+    heading = Label(login_window, text='USER LOGIN', font=('Microsoft Yahei UI Light', 23, 'bold'))
+    heading.place(x=200, y=120)
 
     emailEntry = Entry(login_window, width=25, font=('Microsoft Yahei UI Light', 11, 'bold'), bd=0, fg='firebrick1')
-    emailEntry.place(x=580, y=200)
+    emailEntry.place(x=180, y=200)
     emailEntry.insert(0, 'Email')
 
     emailEntry.bind('<FocusIn>', user_enter)
 
-    Frame(login_window, width=250, height=2, bg='firebrick1').place(x=580, y=222)
+    Frame(login_window, width=250, height=2, bg='firebrick1').place(x=170, y=222)
 
     passwordEntry = Entry(login_window, width=25, font=('Microsoft Yahei UI Light', 11, 'bold'), bd=0, fg='firebrick1')
-    passwordEntry.place(x=580, y=260)
+    passwordEntry.place(x=180, y=260)
     passwordEntry.insert(0, 'Password')
 
     passwordEntry.bind('<FocusIn>', password_enter)
 
-    Frame(login_window, width=250, height=2, bg='firebrick1').place(x=580, y=282)
-    openeye = PhotoImage(file='openeye.png')
-    eyeButton = Button(login_window, image=openeye, bd=0, bg='white', activebackground='white', cursor='hand2',
-                       command=hide)
-    eyeButton.place(x=800, y=255)
+    Frame(login_window, width=250, height=2, bg='firebrick1').place(x=170, y=282)
+    #openeye = PhotoImage(file='openeye.png')
+    #eyeButton = Button(login_window, image=openeye, bd=0, bg='white', activebackground='white', cursor='hand2',
+    #                   command=hide)
+    #eyeButton.place(x=300, y=255)
 
-    forgetButton = Button(login_window, text='Forget Password?', bd=0, bg='white', fg='firebrick1',
-                          activebackground='white', cursor='hand2', font=('Microsoft Yahei UI Light', 9, 'bold'),
-                          activeforeground='firebrick1', command=forget_pass)
-    forgetButton.place(x=715, y=295)
+    forgetButton = Button(login_window, text='Forget Password?', bd=0, bg='white', fg='firebrick1', cursor='hand2', font=('Microsoft Yahei UI Light', 9, 'bold'), command=forget_pass)
+    forgetButton.place(x=305, y=295)
 
-    loginButton = Button(login_window, text='Login', font=('Open Sans', 16, 'bold'), fg='white', bg='firebrick1',
-                         activebackground='white', cursor='hand2', bd=0, width=19, command=login_user)
-    loginButton.place(x=578, y=350)
+    loginButton = Button(login_window, text='Login', font=('Open Sans', 16, 'bold'), fg='white', bg='firebrick1', cursor='hand2', bd=0, width=19, command=login_user)
+    loginButton.place(x=178, y=350)
     '''orlabel = label(login_window,text='---------',font=('Open Sans',16),fg='firebrick1')
     orlabel.place(x=583, y= )'''
 

@@ -119,10 +119,10 @@ def create_sign_in_window():
     #bgLabel = Label(login_window, image=bgImg)
     #bgLabel.place(x=0, y=0)
 
-    heading = Label(login_window, text='USER LOGIN', font=('Microsoft Yahei UI Light', 23, 'bold'))
+    heading = Label(login_window, text='USER LOGIN', font=('Microsoft Yahei UI Light', 23, 'bold'),bg='#fdc1d0')
     heading.place(x=200, y=120)
 
-    emailEntry = Entry(login_window, width=25, font=('Microsoft Yahei UI Light', 11, 'bold'), bd=0, fg='firebrick1')
+    emailEntry = Entry(login_window, width=25, font=('Microsoft Yahei UI Light', 11, 'bold'), bd=0, bg='#fdc1d0')
     emailEntry.place(x=180, y=200)
     emailEntry.insert(0, 'Email')
 
@@ -130,7 +130,7 @@ def create_sign_in_window():
 
     Frame(login_window, width=250, height=2, bg='firebrick1').place(x=170, y=222)
 
-    passwordEntry = Entry(login_window, width=25, font=('Microsoft Yahei UI Light', 11, 'bold'), bd=0, fg='firebrick1')
+    passwordEntry = Entry(login_window, width=25, font=('Microsoft Yahei UI Light', 11, 'bold'), bd=0, bg='#fdc1d0')
     passwordEntry.place(x=180, y=260)
     passwordEntry.insert(0, 'Password')
 
@@ -142,7 +142,7 @@ def create_sign_in_window():
     #                   command=hide)
     #eyeButton.place(x=300, y=255)
 
-    forgetButton = Button(login_window, text='Forget Password?', bd=0, bg='white', fg='firebrick1', cursor='hand2', font=('Microsoft Yahei UI Light', 9, 'bold'), command=forget_pass)
+    forgetButton = Button(login_window, text='Forget Password?', bd=0, cursor='hand2', font=('Microsoft Yahei UI Light', 9, 'bold'),bg='#fdc1d0', command=forget_pass)
     forgetButton.place(x=305, y=295)
 
     loginButton = Button(login_window, text='Login', font=('Open Sans', 16, 'bold'), fg='white', bg='firebrick1', cursor='hand2', bd=0, width=19, command=login_user)
@@ -150,7 +150,7 @@ def create_sign_in_window():
     '''orlabel = label(login_window,text='---------',font=('Open Sans',16),fg='firebrick1')
     orlabel.place(x=583, y= )'''
 
-    signuplabel = Label(login_window, text='Dont have an account?', font=('Open Sans', 9, 'bold'), fg='firebrick1',
+    signuplabel = Label(login_window, text='Dont have an account?', font=('Open Sans', 9, 'bold'),
                         bg='white')
     signuplabel.place(x=590, y=400)
 
